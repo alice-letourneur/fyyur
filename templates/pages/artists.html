@@ -1,0 +1,23 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Fyyur | Artists{% endblock %}
+{% block content %}
+<ul class="items">
+	{% for artist in artists %}
+	<li>
+		<a href="/artists/{{ artist.id }}">
+			<i class="fas fa-users"></i>
+			<div class="item">
+				<h5>{{ artist.name }}</h5>
+				{% if artist.num_upcoming_shows %}
+					{% if artist.num_upcoming_shows == 1 %}
+						<p>{{ artist.num_upcoming_shows }} show coming up soon</p>
+					{% else %}
+						<p>{{ artist.num_upcoming_shows }} shows coming up soon</p>
+					{% endif %}
+				{% endif %}
+			</div>
+		</a>
+	</li>
+	{% endfor %}
+</ul>
+{% endblock %}
